@@ -1,0 +1,61 @@
+<section id="opening">
+    <div class="container">
+    	<div class="row">
+    	    <div class="col-xs-12">
+            <form action="/manage/messages" method="post" id="email-form" >
+    					<div class="col-md-6 form-line">
+                <div class="form-group">
+                  <label for="triggers">Trigger</label>
+                  <select class="form-control" id="triggers" name="triggers">
+                    {{#each trigger}}
+                    {{#if this.selected}}
+                    <option value="{{ this.triggerTag }}" selected>{{ this.triggerTag }}</option>
+                    {{else}}
+                    <option value="{{ this.triggerTag }}">{{ this.triggerTag }}</option>
+                    {{/if}}
+                      {{/each}}
+                    </select>
+                </div>
+    			  			<div class="form-group">
+    			  				<label for="sender">Sender Address</label>
+    					    	<input type="email" class="form-control" name="sender" id="sender" placeholder="sender@foo.com" value="{{ mess.sender }}">
+    				  		</div>
+                  <div class="form-group">
+                    <label for="personal">Sender Name</label>
+                    <input type="text" class="form-control" name="personal" id="personal" placeholder="Personal Name" value="{{ mess.personal }}">
+                  </div>
+    				  		<div class="form-group">
+    					    	<label for="subject">Subject</label>
+    					    	<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" value="{{ mess.subject }}">
+    					  	</div>
+    			  			<div class="form-group">
+    			  				<label for ="description"> Message</label>
+    			  			 	<textarea  rows="20" class="form-control" name="description" id="description" placeholder="Enter Your Message" >{{ mess.body }}</textarea>
+    			  			</div>
+    			  			<div>
+                    <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Save">
+    			  			</div>
+
+    					</div>
+    				</form>
+            <div class="col-md-6 form-line">
+              <h2>Tags</h2>
+              <ul>
+                <li>NAME - recipient name</li>
+                <li>CLICKURL - confirmation URL</li>
+              </ul>
+            </div>
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{error}}</p>
+            </div>
+        </div>
+    </div>
+</footer>

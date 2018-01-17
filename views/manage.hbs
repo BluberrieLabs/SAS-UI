@@ -1,0 +1,82 @@
+<section id="manage">
+    <div class="container">
+    	<div class="row">
+    	    <div class="col-xs-12">
+                <table class="table table-striped table-hover" id="usertable">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Last Login</th>
+                                    <th>Confirmed</th>
+                                    <th>Facebook</th>
+                                    <th>Role</th>
+                                    <th>Closed</th>
+                                    <th>Locked</th>
+                                    <th>Delete</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each users}}
+                                <tr id="{{ this.userid }}">
+                                    <td class="align-middle">{{ this.fullname }}</td>
+                                    <td>{{ this.email }}</td>
+                                    <td>{{ this.last }}</td>
+                                    <td>
+                                      <label class="btn btn-success active">
+                                    {{#if this.confirmed}}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    {{else}}
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    {{/if}}
+                                  </label>
+                                    </td>
+                                    <td>
+                                      <label class="btn btn-info active">
+                                    {{#if this.facebook}}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                    {{else}}
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    {{/if}}
+                                  </label>
+                                    </td>
+                                    <td>{{ this.role }}</td>
+                                    <td>
+                                    <button class="btn btn-primary active custombut" onclick="openClick('{{ this.userid }}')" id="open-{{ this.userid }}">{{#if this.closed}}Open{{else}}Close{{/if}}</button>
+                                  </td>
+                                  <td>
+                                  <button type="button" class="btn btn-warning custombut" onclick="lockClick('{{ this.userid }}')" id="lock-{{ this.userid }}">{{#if this.locked}}Unlock{{else}}Lock{{/if}}</button>
+                                </td>
+                                <td>
+                                  <button class="btn btn-danger custombut" onclick="deleteClick('{{ this.userid }}')">Delete</button>
+                              </td>
+                                  </label>
+                                    </td>
+
+
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+
+
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+
+<script>
+$(document).ready(function() {
+    $('#usertable').DataTable();
+} );
+</script>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{error}}</p>
+            </div>
+        </div>
+    </div>
+</footer>
